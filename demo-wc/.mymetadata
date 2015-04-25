@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="demo-wc"
+  id="myeclipse.1429839503851"
+  context-root="/wc"
+  j2ee-spec="6.0"
+  archive="demo-wc.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

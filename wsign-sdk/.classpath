@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-codec-1.10.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-io-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/gson-2.2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/joda-time-2.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/json-smart-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/nimbus-jose-jwt-3.5.jar"/>
+	<classpathentry exported="true" kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_6_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

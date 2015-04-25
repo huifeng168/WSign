@@ -1,0 +1,35 @@
+===================================================
+Running WSign v1.0
+===================================================
+
+requires JEE Environment
+1,Apache Tomcat 6.0 or later.
+2,Environment (JRE) version 6 or later.
+
+(1) Download and Install a Java SE Runtime Environment (JRE)
+
+(1.1) Download a Java SE Runtime Environment (JRE),
+      release version 6 or later, from
+      http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+(1.2) Install the JRE according to the instructions included with the
+      release.
+
+      You may also use a full Java Development Kit (JDK) rather than just
+      a JRE.
+
+
+(2) Download and Install Apache Tomcat
+
+(2.1) Download a binary distribution of Tomcat from:
+
+      http://tomcat.apache.org/
+(3) Hosts Mapping setting
+	  127.0.0.1 login.connsec.com
+
+(4) Put wsign.war,wc.war,wt.war to ${apache-tomcat-vesion}\webapps
+
+(5) Start tomcat
+
+(6) Open browser then visite :
+      http://login.connsec.com:8080/wsign

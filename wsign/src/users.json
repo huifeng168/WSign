@@ -1,0 +1,17 @@
+{
+	"localJsonUserInfo":
+		[
+			{
+			  "username": "wsign",
+			  "credential": "123456"
+			},
+			{
+			  "username": "test",
+			  "credential": "test"
+			},
+			{
+			  "username": "ssouser",
+			  "credential": "ssouser"
+			}
+		]
+}

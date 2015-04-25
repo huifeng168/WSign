@@ -1,0 +1,23 @@
+{
+	"WSignApps":
+		[
+			{
+			  "target": "http://login.connsec.com:8080/wc/index.jsp",
+			  "client_secret": "KOHaEcb8",
+			  "method": "wc",
+			  "expires": "2",
+			  "encrypt": "true",
+			  "algorithm": "DES",
+			  "sign": "true"
+			},
+			{
+			  "target": "http://login.connsec.com:8080/wt/index.jsp",
+			  "client_secret": "KOHaEcb8",
+			  "method": "wt",
+			  "expires": "2",
+			  "encrypt": "true",
+			  "algorithm": "DES",
+			  "sign": "true"
+			}
+		]
+}
