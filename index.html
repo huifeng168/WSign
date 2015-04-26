@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Wsign : Single Sign On  Based on browser cookie and http post">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Wsign</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/shimingxy/WSign">View on GitHub</a>
+
+          <h1 id="project_title">Wsign</h1>
+          <h2 id="project_tagline">Single Sign On  Based on browser cookie and http post</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/shimingxy/WSign/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/shimingxy/WSign/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="web-signwsign" class="anchor" href="#web-signwsign" aria-hidden="true"><span class="octicon octicon-link"></span></a>Web Sign(WSign)</h1>
+
+<h3>
+<a id="version-10-ga" class="anchor" href="#version-10-ga" aria-hidden="true"><span class="octicon octicon-link"></span></a>Version 1.0 GA</h3>
+
+<p>Blog : <a href="http://shimingxy.blog.163.com/">http://shimingxy.blog.163.com/</a></p>
+
+<p>Welcome to the home of  the  Web Sign project, more commonly referred to as WSign.  </p>
+
+<p>Web Sign is the Single Sign On applications for  web applications . </p>
+
+<p>Web Sign Based on <strong>browser cookie </strong> and  <strong>http post</strong></p>
+
+<p>Web Sign简称为WSign,是一款基于<strong>浏览器Cookie</strong>和<strong>http post</strong>的Web应用单点登录系统.</p>
+
+<p>WSign采用流行的加密和签名的技术保障单点登录的安全性.</p>
+
+<ul>
+<li>An open and well-documented/开放具有良好文档</li>
+<li>An open-source Java server component/基于JAVA EE开源产品</li>
+<li>A library of clients for Java, .Net others/支持客户端Java, .Net 其他</li>
+<li>License at Apache License, Version 2.0 /开源免费</li>
+</ul>
+
+<h3>
+<a id="protocol" class="anchor" href="#protocol" aria-hidden="true"><span class="octicon octicon-link"></span></a>Protocol</h3>
+
+<ul>
+<li>Cookie Based Token(wc),Token transmit by browser cookie /基于Cookie认证，通过浏览器Cookie传递Token</li>
+<li>Token  Based Token(wt),Post token to target via http post method/通过HTTP POST的方式提交Token到目标应用</li>
+</ul>
+
+<h3>
+<a id="token" class="anchor" href="#token" aria-hidden="true"><span class="octicon octicon-link"></span></a>Token</h3>
+
+<p>1)Original Token 原始格式</p>
+
+<pre><code>[登录用户名]@@[Token过期时间(UTC)]
+[login username]@@[Token expire date time(UTC)]
+
+wsignuser@@2015-04-24T16:56:32.402+08:00</code></pre>
+     
+
+<p>2)Encryption,then to HEX ,algorithm support DES,DESede,Blowfish and AES 加密格式，加密处理完成后，转换为HEX格式，加密方法DES,DESede,Blowfish and AES</p>
+
+<pre><code>6d4a75efc32a791643fc73686f95a6fe2cc0175756bc4fb7978d7f84c2955f5aeecf991722e641e3</code></pre>
+  
+
+<p>3)Base64URL Token 编码格式Base64URL</p>
+
+<pre><code>NmQ0YTc1ZWZjMzJhNzkxNjQzZmM3MzY4NmY5NWE2ZmUyY2MwMTc1NzU2YmM0ZmI3OTc4ZDdmODRjMjk1NWY1YWVlY2Y5OTE3MjJlNjQxZTM</code></pre>
+     
+
+<p>4)Signature签名格式
+    Signature step 3 Token 
+    对第3步得到的数据进行签名</p>
+
+<pre><code>f8p75vJ_4KQpi55nygVp0yZ5lSE_5pcdAP6Eq7LhRax0_wbUK3X5EWfysvNb6V4nfLnGmcxE0hgi7miAZ1UOb92wb2CyTCLwSJQ2YLtQaWW49RVr7JUwvkMASLpWR4FPpRh3UmO87fx_KbxfFVzwsvu-Fy0lcIB-aQ5cl-JOgxU</code></pre>
+     
+
+<p>Key Format 证书格式：<a href="https://tools.ietf.org/html/draft-ietf-jose-json-web-key-39" title="JSON Web Key (JWK)">JSON Web Key (JWK)</a>   参见源代码 src/keystore.jwks,含公钥和私钥,WebRoot/key/jwk仅含公钥</p>
+
+<p>Signature Algorithms 签名方法: <a href="https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-39" title="JSON Web Algorithms (JWA)">JSON Web Algorithms (JWA)</a> </p>
+
+<pre><code> RS256        | RSASSA-PKCS-v1_5 using SHA-256    | Recommended    |</code></pre>
+               
+
+<p>5)Transmit Token传递数据</p>
+
+<pre><code>Format [Base64URL Token].[Signature] or [Base64URL Token].
+格式：[Base64URL编码].[签名] or [Base64URL编码].
+NmQ0YTc1ZWZjMzJhNzkxNjQzZmM3MzY4NmY5NWE2ZmUyY2MwMTc1NzU2YmM0ZmI3OTc4ZDdmODRjMjk1NWY1YWVlY2Y5OTE3MjJlNjQxZTM.f8p75vJ_4KQpi55nygVp0yZ5lSE_5pcdAP6Eq7LhRax0_wbUK3X5EWfysvNb6V4nfLnGmcxE0hgi7miAZ1UOb92wb2CyTCLwSJQ2YLtQaWW49RVr7JUwvkMASLpWR4FPpRh3UmO87fx_KbxfFVzwsvu-Fy0lcIB-aQ5cl-JOgxU</code></pre>
+               
+
+<p>备注：第2步和第4步为备选，建议同时使用</p>
+
+<p>MEM:  step 2 and step 4 is option,but Recommended</p>
+
+<h3>
+<a id="token-nametoken名称" class="anchor" href="#token-nametoken%E5%90%8D%E7%A7%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>Token Name[Token名称]</h3>
+
+<pre><code>WSign_Token</code></pre>
+
+<h3>
+<a id="token-parsetoken解析" class="anchor" href="#token-parsetoken%E8%A7%A3%E6%9E%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>Token Parse[Token解析]</h3>
+
+<pre><code>1)Token split 签名分离
+    "."before is Token，after is Signature
+    "."前半部分为Token数据，后半部分为签名
+2)Validate Signature 验证签名
+    
+3)Decode Base64URL Token Base64URL Token解码
+    
+4)Decode encrypted Token 解密加密Token数据
+    
+5)Parse username &amp; authentication time(UTC format) 解析用户名和Token过期时间(UTC)
+    
+6)Validate authentication time(UTC format) 验证Token认证时间
+    if after now,valid，else invalid 
+    大于当前时间,正确;小于当前时间,失效</code></pre>
+        
+
+<p>备注:如果未签名，省略第2步;若果未加密省略第4步</p>
+
+<p>MEM :if not Signature,skip step 2; if not Encryption skip step 4</p>
+
+<h3>
+<a id="sso-paramenter认证参数说明" class="anchor" href="#sso-paramenter%E8%AE%A4%E8%AF%81%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>SSO Paramenter[认证参数说明]</h3>
+
+<pre><code>http://login.connsec.com:8080/wsign/login?target=http://login.connsec.com:8080/wt/index.jsp&amp;wsign=wt
+target     单点登录的目标地址
+wsign      协议，可选值wc or wt
+relaystate 状态值,由应用提供</code></pre>
+
+<h3>
+<a id="webapps-setting-目标应用配置" class="anchor" href="#webapps-setting-%E7%9B%AE%E6%A0%87%E5%BA%94%E7%94%A8%E9%85%8D%E7%BD%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>WebApps Setting [目标应用配置]</h3>
+
+<p>src/wsignapps.json</p>
+
+<pre><code>{
+    "WSignApps":
+        [
+            {
+              "target": "http://login.connsec.com:8080/wc/index.jsp",//目标地址
+              "client_secret": "KOHaEcb8",                           //加密密钥
+              "method": "wc",                                        //协议
+              "expires": "2",                                        //有效期
+              "encrypt": "true",                                     //是否加密
+              "algorithm": "DES",                                    //加密方法
+              "sign": "true"                                         //是否签名
+            }
+        ]
+}</code></pre>
+
+<h3>
+<a id="system-setting系统配置" class="anchor" href="#system-setting%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE" aria-hidden="true"><span class="octicon octicon-link"></span></a>System Setting[系统配置]</h3>
+
+<p>1)wsign.properties</p>
+
+<pre><code>config.datasource.driverclass                        //数据库驱动
+config.datasource.url                                //数据库访问地址
+config.datasource.username                           //数据库用户名
+config.datasource.password                           //数据库密码
+config.authentication.provider                       //认证提供者
+config.query.userinfo.sql                            //用户查询SQL
+config.base.domain                                   //应用Cookie域
+config.characterencoding.encoding                    //系统编码</code></pre>    
+
+<h3>
+<a id="internationalization国际化支持" class="anchor" href="#internationalization%E5%9B%BD%E9%99%85%E5%8C%96%E6%94%AF%E6%8C%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internationalization[国际化支持]</h3>
+
+<p>src/i18n</p>
+
+<pre><code>MessageBundle.properties
+MessageBundle_en.properties
+MessageBundle_zh_CN.properties</code></pre>
+
+<h3>
+<a id="license--copyright" class="anchor" href="#license--copyright" aria-hidden="true"><span class="octicon octicon-link"></span></a>License &amp; Copyright</h3>
+
+<p>Apache License, Version 2.0 , see LICENSE for details.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Wsign maintained by <a href="https://github.com/shimingxy">shimingxy</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
